@@ -6,7 +6,7 @@ public class Move {
 
 
     public static boolean isValidPosition(int positionIndex,Grid grid){
-        positionIndex-=1;
+
         if (positionIndex < 0 || positionIndex >= grid.positions.size()) {
             return false;
         }
@@ -58,10 +58,10 @@ public class Move {
         return true;
     }
 
-    public static void moveLocation(int locationIndex, int direction, Grid grid) {
+    public static void moveLocation(int positionIndex, int direction, Grid grid) {
 
-        if (isValidMove(locationIndex-1, direction, grid)) {
-            Coordinate location = grid.positions.get(locationIndex);
+        if (isValidMove(positionIndex, direction, grid)&&isValidPosition(positionIndex,grid)) {
+            Coordinate location = grid.positions.get(positionIndex);
             int x = location.getX();
             int y = location.getY();
 
@@ -84,7 +84,7 @@ public class Move {
             }
 
             grid.grid[x][y] += 1;
-            grid.positions.set(locationIndex, new Coordinate(x, y));
+            grid.positions.set(positionIndex, new Coordinate(x, y));
             System.out.println("moved");
         } else {
             System.out.println("Invalid move.");

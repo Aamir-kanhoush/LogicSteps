@@ -24,17 +24,17 @@ public class Main {
             System.out.println("Enter position index");
             positionIndex=scanner.nextInt();
 
-            if(Move.isValidPosition(positionIndex,grid)){
+            if(Move.isValidPosition(positionIndex-1,grid)){
                 System.out.println("Enter the direction to move (8 for up, 6 for right, 4 for left, 2 for down):");
                 direction = scanner.nextInt();
-                moveLocation(positionIndex,direction,grid);
+                moveLocation(positionIndex-1,direction,grid);
                 grid.printGrid();
                 grid.printLocations();
             }else {
                 System.out.println("Bad index");
             }
         }
-
+        System.out.println("YOU WIN!!!\nHURRAY!!!");
     }
 
 }
