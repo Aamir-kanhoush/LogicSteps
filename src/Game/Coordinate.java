@@ -2,7 +2,7 @@ package Game;
 
 import java.util.Objects;
 
-public class Coordinate {
+public class Coordinate implements Comparable<Coordinate>{
     private int X;
     private int Y;
 
@@ -34,5 +34,14 @@ public class Coordinate {
     @Override
     public int hashCode() {
         return Objects.hash(X, Y);
+    }
+
+    @Override
+    public int compareTo(Coordinate c) {
+        int compareX = Integer.compare(this.X, c.X);
+        if (compareX == 0) {
+            return Integer.compare(this.Y, c.Y);
+        }
+        return compareX;
     }
 }

@@ -6,7 +6,14 @@ import static Game.Move.moveLocation;
 
 public class Main {
     public static void main(String[] args) {
-        GameLoop();
+        //GameLoop();
+        Grid grid = new Grid();
+        grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level.txt");
+        State state=new State(grid);
+        Grid grid2 = new Grid();
+        grid2.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level2.txt"); // load level into grid2, not grid
+        State state2=new State(grid2);
+        System.out.println(state.equals(state2));
     }
 
     public static void GameLoop() {
