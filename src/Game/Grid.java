@@ -54,7 +54,7 @@ public class Grid {
         System.out.println("Locations:");
         for (int i = 0; i < positions.size(); i++) {
             Coordinate location = positions.get(i);
-            System.out.println("Location #" + (i+1) + ":\nX: " + (location.getX()+1) + ", Y: " + (location.getY()+1));
+            System.out.println("Location #" + (i) + ":\nX: " + (location.getX()) + ", Y: " + (location.getY()));
         }
     }
 

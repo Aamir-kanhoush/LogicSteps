@@ -1,22 +1,20 @@
 package Game;
 
 public class Move {
-    public Grid grid;
-    public Rules rules;
 
 
-    public static boolean isValidPosition(int positionIndex,Grid grid){
+    public static boolean isValidPosition(int positionIndex,State state){
 
-        if (positionIndex < 0 || positionIndex >= grid.positions.size()) {
+        if (positionIndex < 0 || positionIndex >= state.grid.positions.size()) {
             return false;
         }
         return true;
     }
 
 
-    public static boolean isValidMove(int positionIndex, int direction, Grid grid) {
+    public static boolean isValidMove(int positionIndex, int direction, State state) {
 
-        Coordinate location = grid.positions.get(positionIndex);
+        Coordinate location = state.grid.positions.get(positionIndex);
         int x = location.getX();
         int y = location.getY();
 
@@ -39,29 +37,29 @@ public class Move {
         if ((direction == 6 || direction == 4) && newY < 0) {
             return false;
         }
-        if ((direction == 8 || direction == 2) && newX >= grid.rows) {
+        if ((direction == 8 || direction == 2) && newX >= state.grid.rows) {
             return false;
         }
-        if ((direction == 6 || direction == 4) && newY >= grid.columns) {
+        if ((direction == 6 || direction == 4) && newY >= state.grid.columns) {
             return false;
         }
 
         Coordinate newLocation = new Coordinate(newX, newY);
-        if (grid.positions.contains(newLocation)) {
+        if (state.grid.positions.contains(newLocation)) {
             return false;
         }
 
-        if (grid.grid[newX][newY] == 0 || grid.grid[newX][newY] == 6) {
+        if (state.grid.grid[newX][newY] == 0 || state.grid.grid[newX][newY] == 6) {
             return false;
         }
 
         return true;
     }
 
-    public static void moveLocation(int positionIndex, int direction, Grid grid) {
+    public static void moveLocation(int positionIndex, int direction, State state) {
 
-        if (isValidMove(positionIndex, direction, grid)&&isValidPosition(positionIndex,grid)) {
-            Coordinate location = grid.positions.get(positionIndex);
+        if (isValidMove(positionIndex, direction, state)&&isValidPosition(positionIndex,state)) {
+            Coordinate location = state.grid.positions.get(positionIndex);
             int x = location.getX();
             int y = location.getY();
 
@@ -83,8 +81,8 @@ public class Move {
                     return;
             }
 
-            grid.grid[x][y] += 1;
-            grid.positions.set(positionIndex, new Coordinate(x, y));
+            state.grid.grid[x][y] += 1;
+            state.grid.positions.set(positionIndex, new Coordinate(x, y));
             System.out.println("moved");
         } else {
             System.out.println("Invalid move.");

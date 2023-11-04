@@ -42,11 +42,11 @@ public class State {
         return toString().hashCode();
     }
 
-    //    public static ArrayList<State> getNextState(Grid grid){
-//        ArrayList<State>nextState=new ArrayList<>();
-//        for (int i=0;i <grid.positions.size();i++){
-//        Move.moveLocation(i,2,grid);
-//        }
-//    }
+    //public static ArrayList<State> getNextState(Grid grid){
+    //        ArrayList<State>nextState=new ArrayList<>();
+    //        for (int i=0;i <grid.positions.size();i++){
+    //        Move.moveLocation(i,2,grid);
+    //        }
+    //    }
 
 }

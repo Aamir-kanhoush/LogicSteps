@@ -1,13 +1,12 @@
 package Game;
 
 public class Rules {
-    public Grid grid;
-    public Move move;
 
-    public static boolean isWon(Grid grid) {
-        for (int i = 0; i < grid.rows; i++) {
-            for (int j = 0; j < grid.columns; j++) {
-                if (!(grid.grid[i][j] == 0 || grid.grid[i][j] == 6)) {
+
+    public static boolean isWon(State state) {
+        for (int i = 0; i < state.grid.rows; i++) {
+            for (int j = 0; j < state.grid.columns; j++) {
+                if (!(state.grid.grid[i][j] == 0 || state.grid.grid[i][j] == 6)) {
                     return false;
                 }
             }
@@ -15,17 +14,13 @@ public class Rules {
         return true;
     }
 
-    public static boolean isStuck(Grid grid) {
-        for (int i = 0; i < grid.positions.size(); i++) {
-            Coordinate location = grid.positions.get(i);
-            int x = location.getX();
-            int y = location.getY();
 
-            if (!Move.isValidMove(i, 8, grid) && !Move.isValidMove(i, 6, grid) && !Move.isValidMove(i, 4, grid) && !Move.isValidMove(i, 2, grid)) {
-                return true;
-            }
+
+    public static boolean isStuck(State state) {
+        for (int i = 0; i < state.grid.positions.size(); i++) {
+            if (!Move.isValidMove(i, 8, state) && !Move.isValidMove(i, 6, state) && !Move.isValidMove(i, 4, state) && !Move.isValidMove(i, 2, state)) {
+                return true;}
         }
-
         return false;
     }
 }
