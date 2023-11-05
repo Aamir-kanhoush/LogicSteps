@@ -1,20 +1,21 @@
 package Game;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
-import java.util.Stack;
 
-public class DFS {
-    public static void searchDFS(State initialState, int maxDepth) {
-        Stack<State> stack = new Stack<>();
-        stack.push(initialState);
-        while (!stack.isEmpty()) {
-            if (stack.size() > maxDepth) { // Check if we've reached the maximum depth
-                System.out.println("No winning state found within the specified depth");
-                return;
-            }
-            State currentState = stack.pop();
+public class BFS {
+    public static void searchBFS(State initialState, int maxDepth) {
+        Queue<State> queue = new LinkedList<>();
+        queue.add(initialState);
+        while (!queue.isEmpty()) {
+            State currentState = queue.poll();
             currentState.grid.printLocations();
             currentState.grid.printGrid();
+            if (queue.size() > maxDepth) { // Check if we've reached the maximum depth
+                System.out.println("No winning state found");
+                return;
+            }
             if (Rules.isWon(currentState)) {
                 System.out.println("Winning state found: " + currentState);
                 printSteps(currentState);
@@ -22,16 +23,16 @@ public class DFS {
             }
             Set<State> nextStates = State.getNextState(currentState);
             for (State nextState : nextStates) {
-                if (!stack.contains(nextState)) {
-                    stack.push(nextState);
+                if (!queue.contains(nextState)) {
+                    queue.add(nextState);
                 }
             }
         }
-        System.out.println("No winning state found");
+        System.out.println("No winning state found within the specified depth");
     }
 
     private static void printSteps(State state) {
-        Stack<State> stack = new Stack<>();
+        LinkedList<State> stack = new LinkedList<>();
         State currentState = state;
         while (currentState != null) {
             stack.push(currentState);

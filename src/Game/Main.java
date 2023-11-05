@@ -10,13 +10,19 @@ public class Main {
         //GameLoop();
         State state = new State(new Grid());
         state.grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level.txt");
+        BFS.searchBFS(state,100);
+//        Set<State> nextState = State.getNextState(state);
+//        for (State obj:nextState) {
+//            obj.grid.printLocations();
+//            obj.grid.printGrid();
+//            System.out.println("my parent state");
+//            State temp=State.getParentState(obj);
+//            temp.grid.printLocations();
+//            temp.grid.printGrid();
+//        }
 
-        Set<State> next= State.getNextState(state);
-        for (State n:next) {
-            State.getNextState(n);
-        }
 
-     }
+    }
 
 
 

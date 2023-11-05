@@ -4,7 +4,7 @@ import java.util.*;
 
 public class State {
     public Grid grid;
-
+    public static Map<State, State> parentMap = new HashMap<>();
     public State(Grid grid) {
         this.grid = grid;
     }
@@ -69,6 +69,7 @@ public class State {
                     State copy = State.deepCopy(state);
                     copy=Move.moveLocation(i, direction, copy);
                     nextStates.add(copy);
+                    parentMap.put(copy, state);
                 }
 
             }
@@ -76,4 +77,9 @@ public class State {
         }
         return nextStates;
     }
+
+    public static State getParentState(State state) {
+        return parentMap.get(state);
+    }
+
 }

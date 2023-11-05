@@ -49,10 +49,10 @@ public class Grid {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     public void printLocations() {
-        System.out.println("Locations:");
         for (int i = 0; i < positions.size(); i++) {
             Coordinate location = positions.get(i);
             System.out.println("Location #" + (i) + ":\nX: " + (location.getX()) + ", Y: " + (location.getY()));
