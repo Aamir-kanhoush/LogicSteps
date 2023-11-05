@@ -10,6 +10,7 @@ public class Grid {
     public ArrayList<Coordinate> positions;
 
 
+
     public void loadLevel(String filepath) {
         try {
             Scanner scanner = new Scanner(new File(filepath));
@@ -42,9 +43,9 @@ public class Grid {
 
     public void printGrid() {
         System.out.println();
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                System.out.print(grid[i][j] + " ");
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.columns; j++) {
+                System.out.print(this.grid[i][j] + " ");
             }
             System.out.println();
         }

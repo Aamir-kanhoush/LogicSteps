@@ -56,7 +56,7 @@ public class Move {
         return true;
     }
 
-    public static void moveLocation(int positionIndex, int direction, State state) {
+    public static State moveLocation(int positionIndex, int direction, State state) {
 
         if (isValidMove(positionIndex, direction, state)&&isValidPosition(positionIndex,state)) {
             Coordinate location = state.grid.positions.get(positionIndex);
@@ -78,14 +78,15 @@ public class Move {
                     break;
                 default:
                     System.out.println("Invalid direction. Please use the numpad keys: 8 (up), 6 (right), 4 (left), or 2 (down).");
-                    return;
+                    return state;
             }
-
-            state.grid.grid[x][y] += 1;
-            state.grid.positions.set(positionIndex, new Coordinate(x, y));
-            System.out.println("moved");
+            State copy=State.deepCopy(state);
+            copy.grid.grid[x][y] += 1;
+            copy.grid.positions.set(positionIndex, new Coordinate(x, y));
+            return copy;
         } else {
             System.out.println("Invalid move.");
+            return state;
         }
     }
 }

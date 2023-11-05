@@ -18,9 +18,12 @@ public class Rules {
 
     public static boolean isStuck(State state) {
         for (int i = 0; i < state.grid.positions.size(); i++) {
-            if (!Move.isValidMove(i, 8, state) && !Move.isValidMove(i, 6, state) && !Move.isValidMove(i, 4, state) && !Move.isValidMove(i, 2, state)) {
-                return true;}
+            if (!Move.isValidMove(i, 8, state) || !Move.isValidMove(i, 6, state) || !Move.isValidMove(i, 4, state) || !Move.isValidMove(i, 2, state)) {
+                continue;
+            }
+            return false;
         }
-        return false;
+        return true;
     }
+
 }
