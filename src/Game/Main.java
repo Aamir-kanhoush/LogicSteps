@@ -28,14 +28,7 @@ public class Main {
                 UCS.searchUCS(state,1000);
         }
 
-
-
-
-
-
     }
-
-
 
 
     public static void GameLoop(State state,Scanner scanner) {

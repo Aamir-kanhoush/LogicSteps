@@ -43,14 +43,6 @@ public class Coordinate implements Comparable<Coordinate>{
     }
 
 
-    public int compareCoordinate(Coordinate c) {
-        int compareX = Integer.compare(this.X, c.X);
-        if (compareX == 0) {
-            return Integer.compare(this.Y, c.Y);
-        }
-        return compareX;
-    }
-
     @Override
     public int compareTo(Coordinate c) {
         return this.getCost()-c.getCost();
