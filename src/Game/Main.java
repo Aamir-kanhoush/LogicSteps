@@ -2,7 +2,6 @@ package Game;
 
 import java.util.*;
 
-import static Game.Move.moveLocation;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,10 +9,12 @@ public class Main {
         State state = new State(new Grid());
         state.grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level.txt");
         String Mode="";
+        System.out.println("Available Modes:\nhmn: You play the game\nbfs: solve the game using bfs\ndfs: solve the game using dfs\nucs: solve the game using ucs\nEnter game mode:");
+        Mode=scanner.next();
         switch (Mode){
             case "hmn":
                 System.out.println("Human is on the game");
-                GameLoop();
+                GameLoop(state,scanner);
 
             case "bfs":
                 System.out.println("BFS is on the game");
@@ -38,10 +39,7 @@ public class Main {
 
 
 
-    public static void GameLoop() {
-        State state = new State(new Grid());
-        state.grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level2.txt");
-        Scanner scanner = new Scanner(System.in);
+    public static void GameLoop(State state,Scanner scanner) {
         int positionIndex, direction;
         state.grid.printGrid();
         state.grid.printLocations();
