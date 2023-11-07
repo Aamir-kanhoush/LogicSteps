@@ -8,9 +8,8 @@ public class Main {
         Scanner scanner=new Scanner(System.in);
         State state = new State(new Grid());
         state.grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level.txt");
-        String Mode="";
         System.out.println("Available Modes:\nhmn: You play the game\nbfs: solve the game using bfs\ndfs: solve the game using dfs\nucs: solve the game using ucs\nEnter game mode:");
-        Mode=scanner.next();
+        String Mode=scanner.next();
         switch (Mode){
             case "hmn":
                 System.out.println("Human is on the game");
