@@ -1,7 +1,6 @@
 package Game;
 
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 import static Game.Move.moveLocation;
 
@@ -10,7 +9,10 @@ public class Main {
         //GameLoop();
         State state = new State(new Grid());
         state.grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level.txt");
-        BFS.searchBFS(state,100);
+        System.out.println(state);
+        UCS.searchUCS(state, 10);
+
+        //BFS.searchBFS(state,100);
 //        Set<State> nextState = State.getNextState(state);
 //        for (State obj:nextState) {
 //            obj.grid.printLocations();

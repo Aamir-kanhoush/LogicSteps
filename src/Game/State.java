@@ -28,9 +28,10 @@ public class State {
     public String toString() {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < grid.positions.size(); i++) {
-            int x = grid.positions.get(i).getX() + 1;
-            int y = grid.positions.get(i).getY() + 1;
-            string.append("(").append(x).append(",").append(y).append(")");
+            int x = grid.positions.get(i).getX() ;
+            int y = grid.positions.get(i).getY() ;
+            int cost = grid.positions.get(i).getCost();
+            string.append("(X: ").append(x).append(", Y:").append(y).append(", Cost: ").append(cost).append(")");
         }
         return string.toString();
     }
@@ -52,7 +53,7 @@ public class State {
         }
         copiedGrid.positions = new ArrayList<>();
         for (Coordinate coordinate : state.grid.positions) {
-            copiedGrid.positions.add(new Coordinate(coordinate.getX(), coordinate.getY()));
+            copiedGrid.positions.add(new Coordinate(coordinate.getX(), coordinate.getY(), coordinate.getCost()));
         }
         State copiedState=new State(copiedGrid);
         return copiedState;

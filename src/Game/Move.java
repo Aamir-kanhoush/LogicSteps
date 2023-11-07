@@ -17,6 +17,7 @@ public class Move {
         Coordinate location = state.grid.positions.get(positionIndex);
         int x = location.getX();
         int y = location.getY();
+        int cost = location.getCost();
 
         int newX = x;
         int newY = y;
@@ -44,7 +45,7 @@ public class Move {
             return false;
         }
 
-        Coordinate newLocation = new Coordinate(newX, newY);
+        Coordinate newLocation = new Coordinate(newX, newY,cost);
         if (state.grid.positions.contains(newLocation)) {
             return false;
         }
@@ -62,7 +63,7 @@ public class Move {
             Coordinate location = state.grid.positions.get(positionIndex);
             int x = location.getX();
             int y = location.getY();
-
+            int cost = location.getCost();
             switch (direction) {
                 case 8: // Up
                     x--;
@@ -82,7 +83,7 @@ public class Move {
             }
             State copy=State.deepCopy(state);
             copy.grid.grid[x][y] += 1;
-            copy.grid.positions.set(positionIndex, new Coordinate(x, y));
+            copy.grid.positions.set(positionIndex, new Coordinate(x, y, cost));
             return copy;
         } else {
             System.out.println("Invalid move.");

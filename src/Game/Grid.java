@@ -1,8 +1,8 @@
 package Game;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.io.*;
-import java.util.Scanner;
+
 
 public class Grid {
     public int rows, columns;
@@ -31,7 +31,8 @@ public class Grid {
             while (scanner.hasNext()) {
                 int x = scanner.nextInt();
                 int y = scanner.nextInt();
-                positions.add(new Coordinate(x, y));
+                int cost = scanner.nextInt();
+                positions.add(new Coordinate(x, y, cost));
             }
 
             scanner.close();
@@ -52,11 +53,15 @@ public class Grid {
         System.out.println();
     }
 
+
     public void printLocations() {
         for (int i = 0; i < positions.size(); i++) {
             Coordinate location = positions.get(i);
-            System.out.println("Location #" + (i) + ":\nX: " + (location.getX()) + ", Y: " + (location.getY()));
+            System.out.println("Location #" + (i) + ":\nX: " + (location.getX()) + ", Y: " + (location.getY())+", Cost:"+location.getCost());
         }
     }
+
+
+
 
 }
