@@ -6,25 +6,31 @@ import static Game.Move.moveLocation;
 
 public class Main {
     public static void main(String[] args) {
-//        GameLoop();
+        Scanner scanner=new Scanner(System.in);
         State state = new State(new Grid());
         state.grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level.txt");
-        System.out.println("start:");
-        state.grid.printGrid();
-        state.grid.printLocations();
-        System.out.println("Game on:");
-//        UCS.searchUCS(state, 2000000000);
-//        BFS.searchBFS(state,2000000000);
-//        DFS.searchDFS(state,2000000000);
-//        Set<State> nextState = State.getNextState(state);
-//        for (State obj:nextState) {
-//            obj.grid.printLocations();
-//            obj.grid.printGrid();
-//            System.out.println("my parent state");
-//            State temp=State.getParentState(obj);
-//            temp.grid.printLocations();
-//            temp.grid.printGrid();
-//        }
+        String Mode="";
+        switch (Mode){
+            case "hmn":
+                System.out.println("Human is on the game");
+                GameLoop();
+
+            case "bfs":
+                System.out.println("BFS is on the game");
+                BFS.searchBFS(state,1000);
+
+            case "dfs":
+                System.out.println("DFS is on the game");
+                BFS.searchBFS(state,1000);
+
+            case "UCS":
+                System.out.println("UCS is on the game");
+                UCS.searchUCS(state,1000);
+        }
+
+
+
+
 
 
     }
