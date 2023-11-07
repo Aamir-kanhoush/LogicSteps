@@ -59,7 +59,7 @@ public class Move {
             return false;
         }
 
-        if (state.grid.grid[newX][newY] == 0 || state.grid.grid[newX][newY] == 6) {
+        if (state.grid.grid[newX][newY] == 0 || state.grid.grid[newX][newY] == 5) {
             return false;
         }
 

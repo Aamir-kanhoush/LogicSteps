@@ -7,27 +7,45 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
         State state = new State(new Grid());
-        state.grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level.txt");
-        System.out.println("Available Modes:\nhmn: You play the game\nbfs: solve the game using bfs\ndfs: solve the game using dfs\nucs: solve the game using ucs\nEnter game mode:");
-        String Mode=scanner.next();
-        switch (Mode){
-            case "hmn":
-                System.out.println("Human is on the game");
-                GameLoop(state,scanner);
+        state.grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level3.txt");
+        String Mode="";
+        while (!Mode.equals("exit")) {
+            System.out.println("\nAvailable Modes:\nhmn: You play the game\nbfs: solve the game using bfs\ndfs: solve the game using dfs\nrdfs: solve the game using recursive dfs\nucs: solve the game using ucs\nexit: well...exit obviously\nEnter game mode:");
+            Mode= scanner.next();
+            switch (Mode) {
+                case "hmn":
+                    System.out.println("Human is on the game");
+                    GameLoop(state, scanner);
+                    break;
 
-            case "bfs":
-                System.out.println("BFS is on the game");
-                BFS.searchBFS(state,1000);
+                case "bfs":
+                    System.out.println("BFS is on the game");
+                    BFS.searchBFS(state, 10000);
+                    break;
 
-            case "dfs":
-                System.out.println("DFS is on the game");
-                BFS.searchBFS(state,1000);
+                case "dfs":
+                    System.out.println("DFS is on the game");
+                    BFS.searchBFS(state, 10000);
+                    break;
 
-            case "UCS":
-                System.out.println("UCS is on the game");
-                UCS.searchUCS(state,1000);
+                case "rdfs":
+                    System.out.println("RDFS is on the game");
+                    RDFS.searchRDFS(state, 10000);
+                    break;
+
+                case "ucs":
+                    System.out.println("UCS is on the game");
+                    UCS.searchUCS(state, 10000);
+                    break;
+
+                case "exit":
+                    System.out.println("Peace out!!!");
+                    break;
+
+                default:
+                    System.out.println("It's not that hard enter a valid Mode");
+            }
         }
-
     }
 
 

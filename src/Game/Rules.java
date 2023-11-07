@@ -6,7 +6,7 @@ public class Rules {
     public static boolean isWon(State state) {
         for (int i = 0; i < state.grid.rows; i++) {
             for (int j = 0; j < state.grid.columns; j++) {
-                if (!(state.grid.grid[i][j] == 0 || state.grid.grid[i][j] == 6)) {
+                if (!(state.grid.grid[i][j] == 0 || state.grid.grid[i][j] == 5)) {
                     return false;
                 }
             }
