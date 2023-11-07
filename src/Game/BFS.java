@@ -12,7 +12,7 @@ public class BFS {
             State currentState = queue.poll();
             currentState.grid.printLocations();
             currentState.grid.printGrid();
-            if (queue.size() > maxDepth) { // Check if we've reached the maximum depth
+            if (queue.size() > maxDepth) {
                 System.out.println("No winning state found");
                 return;
             }

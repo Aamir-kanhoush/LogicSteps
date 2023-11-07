@@ -31,6 +31,15 @@ public class Move {
             newX = x + 1;
         }
 
+        for (int i = 0; i < state.grid.positions.size(); i++) {
+            if (i == positionIndex) {
+                continue;
+            }
+            Coordinate otherLocation = state.grid.positions.get(i);
+            if (otherLocation.getX() == newX && otherLocation.getY() == newY) {
+                return false;
+            }
+        }
 
         if ((direction == 8 || direction == 2) && newX < 0) {
             return false;
