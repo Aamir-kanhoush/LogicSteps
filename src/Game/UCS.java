@@ -8,7 +8,7 @@ public class UCS {
         PriorityQueue<State> queue = new PriorityQueue<>(Comparator.comparingInt(s -> s.grid.positions.stream().mapToInt(Coordinate::getCost).sum()));
         Map<State, Integer> costSoFar = new HashMap<>();
         Map<State, State> cameFrom = new HashMap<>();
-
+        int visitedCount = 0;
         queue.add(initialState);
         costSoFar.put(initialState, 0);
 
@@ -20,10 +20,12 @@ public class UCS {
 
             if (queue.size() > maxDepth) {
                 System.out.println("No winning state found");
+                System.out.println("Number of visited states: " + visitedCount);
                 return;
             }
             if (Rules.isWon(currentState)) {
-                System.out.println("Winning state found: " + currentState);
+                System.out.println("Winning state found: ");
+                System.out.println("Number of visited states: " + visitedCount);
                 printSteps(currentState,costSoFar);
                 return;
             }
@@ -38,10 +40,13 @@ public class UCS {
                     costSoFar.put(nextState, newCost);
                     queue.add(nextState);
                     cameFrom.put(nextState, currentState);
+                    visitedCount++;
                 }
             }
         }
         System.out.println("No winning state found within the specified depth");
+        System.out.println("Number of visited states: " + visitedCount);
+
     }
 
     private static void printSteps(State state, Map<State, Integer> costSoFar) {

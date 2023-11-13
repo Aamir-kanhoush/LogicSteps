@@ -7,6 +7,7 @@ import java.util.Set;
 public class BFS {
     public static void searchBFS(State initialState, int maxDepth) {
         Queue<State> queue = new LinkedList<>();
+        int visitedCount = 0;
         queue.add(initialState);
         while (!queue.isEmpty()) {
             State currentState = queue.poll();
@@ -14,10 +15,12 @@ public class BFS {
             currentState.grid.printGrid();
             if (queue.size() > maxDepth) {
                 System.out.println("No winning state found");
+                System.out.println("Number of visited states: " + visitedCount);
                 return;
             }
             if (Rules.isWon(currentState)) {
-                System.out.println("Winning state found: " + currentState);
+                System.out.println("Winning state found: ");
+                System.out.println("Number of visited states: " + visitedCount);
                 printSteps(currentState);
                 return;
             }
@@ -25,10 +28,12 @@ public class BFS {
             for (State nextState : nextStates) {
                 if (!queue.contains(nextState)) {
                     queue.add(nextState);
+                    visitedCount++;
                 }
             }
         }
         System.out.println("No winning state found within the specified depth");
+        System.out.println("Number of visited states: " + visitedCount);
     }
 
     private static void printSteps(State state) {

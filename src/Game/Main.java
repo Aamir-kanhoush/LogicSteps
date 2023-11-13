@@ -25,7 +25,7 @@ public class Main {
 
                 case "dfs":
                     System.out.println("DFS is on the game");
-                    BFS.searchBFS(state, 10000);
+                    DFS.searchDFS(state, 10000);
                     break;
 
                 case "rdfs":
