@@ -8,7 +8,8 @@ public class DFS {
         Stack<State> stack = new Stack<>();
         stack.push(initialState);
         while (!stack.isEmpty()) {
-            if (stack.size() > maxDepth) { // Check if we've reached the maximum depth
+
+            if (stack.size() > maxDepth) { 
                 System.out.println("No winning state found within the specified depth");
                 return;
             }

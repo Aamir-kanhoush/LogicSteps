@@ -14,6 +14,7 @@ public class UCS {
 
         while (!queue.isEmpty()) {
             State currentState = queue.poll();
+            System.out.println("Cost so far:"+costSoFar.get(currentState));
             currentState.grid.printLocations();
             currentState.grid.printGrid();
 
@@ -23,7 +24,7 @@ public class UCS {
             }
             if (Rules.isWon(currentState)) {
                 System.out.println("Winning state found: " + currentState);
-                printSteps(currentState);
+                printSteps(currentState,costSoFar);
                 return;
             }
             Set<State> nextStates = State.getNextState(currentState);
@@ -43,7 +44,7 @@ public class UCS {
         System.out.println("No winning state found within the specified depth");
     }
 
-    private static void printSteps(State state) {
+    private static void printSteps(State state, Map<State, Integer> costSoFar) {
         LinkedList<State> stack = new LinkedList<>();
         State currentState = state;
         while (currentState != null) {
@@ -52,7 +53,9 @@ public class UCS {
         }
         System.out.println("Steps to reach the winning state:");
         while (!stack.isEmpty()) {
-            System.out.println(stack.pop());
+            State step = stack.pop();
+            System.out.println(step);
+            System.out.println("Cost so far: " + costSoFar.get(step));
         }
     }
 
