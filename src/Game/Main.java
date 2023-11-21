@@ -7,10 +7,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
         State state = new State(new Grid());
-        state.grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level.txt");
+        state.grid.loadLevel("D:\\Intellij projects\\LogicSteps\\src\\Game\\level4.txt");
         String Mode="";
         while (!Mode.equals("exit")) {
-            System.out.println("\nAvailable Modes:\nhmn: You play the game\nbfs: solve the game using BFS\ndfs: solve the game using DFS\nrdfs: solve the game using recursive DFS\nucs: solve the game using UCS\nastar: solve the game using A*\nexit: well...exit obviously\nEnter game mode:");
+            System.out.println("\nAvailable Modes:\nhmn: You play the game\nbfs: solve the game using BFS\ndfs: solve the game using DFS\nrdfs: solve the game using recursive DFS\nucs: solve the game using UCS\nhc: solve the game using Hill Climbing\nexit: well...exit obviously\nEnter game mode:");
             Mode= scanner.next();
             switch (Mode) {
                 case "hmn":
@@ -36,6 +36,11 @@ public class Main {
                 case "ucs":
                     System.out.println("UCS is on the game");
                     UCS.searchUCS(state, 10000);
+                    break;
+
+                case "hc":
+                    System.out.println("Hill Climbing is on the game");
+                    HC.searchHillClimbing(state, 10000);
                     break;
 
                 case "exit":
